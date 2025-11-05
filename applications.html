@@ -1,79 +1,696 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Bitnami: Open Source. Simplified</title>
-  <link href="bitnami.css" media="all" rel="Stylesheet" type="text/css" /> 
-  <link href="/dashboard/stylesheets/all.css" rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPTV Pro - البث المباشر وقائمة المفضلة</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load HLS.js for video streaming capabilities -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
+    <style>
+        /* Custom styles for aesthetic and performance */
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+        
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #2c3e50;
+            --bg-dark: #1f2937;
+            --text-light: #f9f9f9;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            min-height: 100vh;
+        }
+
+        /* Styling the scrollbar for the categories bar */
+        .categories-scroll::-webkit-scrollbar {
+            height: 4px;
+        }
+        .categories-scroll::-webkit-scrollbar-thumb {
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+        .categories-scroll::-webkit-scrollbar-track {
+            background: #374151;
+        }
+
+        /* Player Modal */
+        .player-modal {
+            background-color: rgba(0, 0, 0, 0.95);
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .player-modal.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .player-container {
+            max-width: 1000px;
+            width: 95%;
+            aspect-ratio: 16 / 9;
+        }
+        #videoPlayer {
+            width: 100%;
+            height: 100%;
+            border-radius: 0.75rem; /* rounded-xl */
+        }
+        
+        /* Spinner Animation */
+        .spinner {
+            border-top-color: var(--primary-color);
+            -webkit-animation: spin 1s linear infinite;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Custom glow effect on hover */
+        .channel-card-hover:hover {
+            box-shadow: 0 0 15px rgba(255, 107, 107, 0.5);
+            transform: translateY(-4px);
+        }
+        
+        /* Favorite Button Style */
+        .fav-btn {
+            transition: color 0.2s;
+        }
+        .fav-btn.favorited {
+            color: #ffc107; /* Gold color for favorited */
+            filter: drop-shadow(0 0 3px #ffc107);
+        }
+    </style>
 </head>
-<body>
-  <div class="contain-to-grid">
-    <nav class="top-bar" data-topbar>
-      <ul class="title-area">
-        <li class="name">
-          <h1><a href="/dashboard/index.html">Apache Friends</a></h1>
-        </li>
-        <li class="toggle-topbar menu-icon">
-          <a href="#">
-            <span>Menu</span>
-          </a>
-        </li>
-      </ul>
-
-      <section class="top-bar-section">
-        <!-- Right Nav Section -->
-        <ul class="right">
-          <li class="active"><a href="/applications.html">Applications</a></li>
-          <li class=""><a href="/dashboard/faq.html">FAQs</a></li>
-          <li class=""><a href="/dashboard/howto.html">HOW-TO Guides</a></li>
-          <li class=""><a target="_blank" href="/dashboard/phpinfo.php">PHPInfo</a></li>
-          <li class=""><a href="/phpmyadmin/">phpMyAdmin</a></li>
-        </ul>
-      </section>
-    </nav>
-  </div>
-  <div id="wrapper">
-    <div class="hero">
-       <div class="row">
-         <div class="large-12 columns">
-            <p>Apache Friends and Bitnami are cooperating to make dozens of open source applications available on XAMPP, for free. Bitnami-packaged applications include Wordpress, Drupal, Joomla! and dozens of others and can be deployed with one-click installers. Visit the <a href="https://bitnami.com/xampp?utm_source=bitnami&utm_medium=installer&utm_campaign=XAMPP%2BModule" target="_blank">Bitnami XAMPP page</a> for details on the currently available apps.</p><br/>
-            <p>Check out our <a href="https://www.apachefriends.org/bitnami_for_xampp.html" target="_blank" >Bitnami for XAMPP Start Guide</a> for more information about the applications installed.</p>
-         </div>
-       </div>
-    </div>
-    <div id="lowerContainer" class="row">
-      <div id="content" class="large-12 columns">
-          <!-- @@BITNAMI_MODULE_PLACEHOLDER@@ -->
-      </div>
-    </div>
-  </div>
-  <footer>
-    <div class="row">
-      <div class="large-12 columns">
-        <div class="row">
-          <div class="large-8 columns">
-            <ul class="social">
-              <li class="twitter"><a href="https://twitter.com/apachefriends">Follow us on Twitter</a></li>
-              <li class="facebook"><a href="https://www.facebook.com/we.are.xampp">Like us on Facebook</a></li>
-              <li class="google"><a href="https://plus.google.com/+xampp/posts">Add us to your G+ Circles</a></li>
-            </ul>
-
-            <ul class="inline-list">
-              <li><a href="https://www.apachefriends.org/blog.html">Blog</a></li>
-              <li><a href="https://www.apachefriends.org/privacy_policy.html">Privacy Policy</a></li>
-              <li>
-                <a target="_blank" href="http://www.fastly.com/">                    CDN provided by
-                  <img width="48" data-2x="/dashboard/images/fastly-logo@2x.png" src="/dashboard/images/fastly-logo.png" />
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div class="large-4 columns">
-            <p class="text-right">Copyright (c) 2015, Apache Friends</p>
-          </div>
+<body class="antialiased min-h-screen">
+    <!-- Header -->
+    <header class="sticky top-0 z-20 bg-gray-900 shadow-xl border-b border-red-500/30">
+        <div class="container mx-auto p-4 flex flex-row-reverse items-center justify-between">
+            <h1 class="text-3xl font-extrabold text-white">📺 IPTV <span class="text-red-500">Pro</span></h1>
+            <div class="flex items-center space-x-2 space-x-reverse">
+                <p id="authStatus" class="text-sm text-gray-400">جاري الاتصال...</p>
+                <span id="userBadge" class="text-xs bg-blue-600 text-white py-1 px-2 rounded-full hidden"></span>
+            </div>
         </div>
-      </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <div class="container mx-auto p-4 pt-8">
+
+        <!-- Search and Category Section -->
+        <section class="mb-6 space-y-4">
+            <!-- Search Box -->
+            <div class="relative">
+                <input type="text" id="searchInput" placeholder="🔍 ابحث عن قناة..." aria-label="بحث عن قناة"
+                    class="w-full bg-gray-800 text-white placeholder-gray-500 p-4 rounded-xl border border-gray-700 focus:ring-2 focus:ring-red-500 text-right">
+            </div>
+
+            <!-- Categories -->
+            <div id="categoriesContainer" class="flex flex-row-reverse space-x-reverse space-x-3 overflow-x-scroll categories-scroll pb-2">
+                <!-- Categories will be rendered here -->
+            </div>
+            
+            <!-- M3U Status Message -->
+            <p id="m3uStatus" class="text-xs text-gray-400 text-right">⚠️ يتم استخدام البيانات الوهمية. يرجى تعديل رابط M3U.</p>
+        </section>
+
+        <!-- Channels Grid Section -->
+        <section class="min-h-[50vh]">
+            <h2 id="currentCategoryTitle" class="text-2xl font-bold mb-6 text-right text-gray-200">
+                جميع القنوات
+            </h2>
+            
+            <div id="channelsContainer" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+                <!-- Channels will be rendered here -->
+            </div>
+
+            <!-- Loading/Error State -->
+            <div id="loadingPlaceholder" class="flex flex-col items-center justify-center p-12 text-gray-400 hidden">
+                <div class="spinner w-10 h-10 border-4 border-gray-600 border-solid rounded-full border-t-red-500 mb-4"></div>
+                <p class="text-lg font-semibold">جاري تحميل القنوات...</p>
+            </div>
+            
+            <div id="noResults" class="hidden text-center p-12 text-gray-400">
+                <p class="text-2xl">❌ لا توجد نتائج مطابقة</p>
+                <p class="mt-2">حاول البحث باسم مختلف أو تغيير الفئة.</p>
+            </div>
+        </section>
     </div>
-  </footer>
+
+    <!-- Video Player Modal -->
+    <div id="playerModal" class="player-modal fixed inset-0 z-50 flex items-center justify-center hidden">
+        <div class="player-container flex flex-col items-center justify-center bg-gray-900 shadow-2xl rounded-xl p-2 relative">
+            <h3 id="playerTitle" class="text-xl font-bold mb-2 text-white text-right w-full pr-4">مشاهدة: اسم القناة</h3>
+            
+            <video id="videoPlayer" controls playsinline preload="auto" poster="https://placehold.co/1920x1080/1f2937/ff6b6b?text=تحميل+الفيديو..." class="rounded-xl bg-black">
+                متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+
+            <div class="player-controls flex flex-row-reverse justify-between w-full mt-3 px-2">
+                <button onclick="app.closePlayer()" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-lg transition duration-200 shadow-md">
+                    إغلاق المشغل
+                </button>
+                <div class="flex items-center space-x-2 space-x-reverse">
+                    <label for="qualitySelect" class="text-gray-400 text-sm hidden sm:block">جودة العرض:</label>
+                    <select id="qualitySelect" class="bg-gray-700 text-white rounded-lg p-2 text-sm focus:ring-red-500">
+                        <option value="auto">جودة تلقائية</option>
+                        <option value="1080p">1080p</option>
+                        <option value="720p">720p</option>
+                        <option value="480p">480p</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 mt-12 p-6 border-t border-red-500/20">
+        <div class="container mx-auto text-center">
+            <p class="text-gray-400 text-sm">© 2024 IPTV Pro - للاستخدام الشخصي فقط. جميع الحقوق محفوظة.</p>
+            <p class="text-gray-500 text-xs mt-1">يجب استخدام هذا التطبيق بشكل قانوني ومسؤول لمشاهدة القنوات المتاحة مجانًا.</p>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK Imports (MUST BE type="module") -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { 
+            getFirestore, collection, onSnapshot, 
+            addDoc, deleteDoc, query, where, getDocs, doc 
+        } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // ==========================================================
+        // === 0. M3U CONFIGURATION (UPDATE THIS URL) ===
+        // ==========================================================
+        
+        /**
+         * ⚠️ يجب عليك استبدال هذا الرابط بالرابط المباشر لملف M3U الخاص بك.
+         * إذا لم تقم بتغييره، سيتم استخدام القنوات الوهمية.
+         */
+        const USER_M3U_URL = "http://eeee.blue:8080/get.php?username=KEdfkBZooV&password=1LNoo5VqKP&type=m3u_plus"; 
+
+
+        // --- GLOBAL FIREBASE/APP VARIABLES ---
+        
+        // Mandatory global variables provided by the environment
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        let db = null;
+        let auth = null;
+        
+        // --- 1. MOCK DATA AND GLOBAL ARRAYS ---
+        // سيتم استبدال هذه القنوات بالبيانات الحقيقية إذا كان رابط M3U صحيحاً
+        let ALL_CHANNELS = [
+            { id: 'ch_aljazeera', name: 'الجزيرة الإخبارية (وهمي)', category: 'الأخبار', icon: '📰', url: 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8' },
+            { id: 'ch_mbcdrama', name: 'MBC دراما (وهمي)', category: 'الترفيه', icon: '🎭', url: 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8' },
+            { id: 'ch_ksa_sport', name: 'الرياضية السعودية (وهمي)', category: 'الرياضة', icon: '⚽', url: 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8' },
+        ];
+        
+        let ALL_CATEGORIES = ['الكل', 'المفضلة', ...new Set(ALL_CHANNELS.map(c => c.category))];
+        let CHANNEL_MAP = ALL_CHANNELS.reduce((acc, c) => {
+            acc[c.id] = c;
+            return acc;
+        }, {});
+
+        // --- 2. GLOBAL APP STATE & ELEMENTS ---
+        window.app = {
+            state: {
+                isAuthReady: false,
+                userId: null,
+                activeCategory: 'الكل',
+                searchQuery: '',
+                hls: null,
+                favorites: new Map(), // Key: channelId, Value: { docId, channelData }
+            },
+            elements: {
+                channelsContainer: document.getElementById('channelsContainer'),
+                categoriesContainer: document.getElementById('categoriesContainer'),
+                searchInput: document.getElementById('searchInput'),
+                playerModal: document.getElementById('playerModal'),
+                videoPlayer: document.getElementById('videoPlayer'),
+                playerTitle: document.getElementById('playerTitle'),
+                loadingPlaceholder: document.getElementById('loadingPlaceholder'),
+                noResults: document.getElementById('noResults'),
+                currentCategoryTitle: document.getElementById('currentCategoryTitle'),
+                authStatus: document.getElementById('authStatus'),
+                userBadge: document.getElementById('userBadge'),
+                m3uStatus: document.getElementById('m3uStatus'), // New element for M3U status
+            },
+            // Public functions will be attached here
+        };
+        
+        // --- 3. M3U PARSING LOGIC ---
+        
+        /**
+         * Fetches and parses an M3U playlist from a given URL.
+         * @param {string} url The public URL of the M3U file.
+         */
+        async function fetchAndParseM3U(url) {
+            const statusElement = app.elements.m3uStatus;
+            
+            if (!url || url.includes('example.com')) {
+                statusElement.textContent = "⚠️ يتم استخدام البيانات الوهمية. يرجى تعديل رابط M3U.";
+                console.warn("Using mock data. Please replace USER_M3U_URL with a real M3U link.");
+                return; // Use mock data
+            }
+
+            statusElement.textContent = "⌛ جاري تحميل وتحليل ملف القنوات...";
+            
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error(`Network response was not ok (${response.status})`);
+                const text = await response.text();
+                
+                const newChannels = [];
+                const lines = text.split('\n');
+                
+                for (let i = 0; i < lines.length; i++) {
+                    const line = lines[i].trim();
+
+                    if (line.startsWith('#EXTINF')) {
+                        // 1. Extract Name (comes after the last comma)
+                        const nameMatch = line.match(/,(.+)$/);
+                        const name = nameMatch ? nameMatch[1].trim() : 'قناة غير معروفة';
+                        
+                        // 2. Extract Category (from group-title="...")
+                        const categoryMatch = line.match(/group-title="([^"]+)"/i);
+                        const category = categoryMatch ? categoryMatch[1].trim() : 'منوعات';
+                        
+                        // 3. Next line should be the URL
+                        const urlLine = lines[i + 1]?.trim();
+
+                        if (urlLine && (urlLine.startsWith('http') || urlLine.startsWith('https'))) {
+                            newChannels.push({
+                                // Use a unique ID combining category and name hash for firestore compatibility
+                                id: `${category}_${btoa(name).substring(0, 8)}`, 
+                                name: name,
+                                category: category,
+                                icon: '📺', 
+                                url: urlLine
+                            });
+                            i++; // Skip the URL line
+                        }
+                    }
+                }
+                
+                // Update global data only if channels were found
+                if (newChannels.length > 0) {
+                    ALL_CHANNELS = newChannels;
+                    
+                    // Re-calculate categories and map
+                    ALL_CATEGORIES = ['الكل', 'المفضلة', ...new Set(ALL_CHANNELS.map(c => c.category))];
+                    CHANNEL_MAP = ALL_CHANNELS.reduce((acc, c) => {
+                        acc[c.id] = c;
+                        return acc;
+                    }, {});
+
+                    statusElement.textContent = `✅ تم تحميل ${newChannels.length} قناة بنجاح!`;
+                    console.log(`Successfully loaded and parsed ${newChannels.length} channels from M3U.`);
+                } else {
+                    statusElement.textContent = "❌ فشل التحميل. لم يتم العثور على قنوات صالحة في الملف.";
+                }
+
+            } catch (error) {
+                statusElement.textContent = `❌ فشل تحميل ملف القنوات. تحقق من الرابط والاتصال.`;
+                console.error("Failed to load M3U file:", error);
+                // Fallback to mock data if real data fails
+            } finally {
+                // Initial rendering after data is loaded (or mocked)
+                renderCategories();
+                renderChannels();
+            }
+        }
+
+
+        // --- 4. FIREBASE SETUP AND AUTHENTICATION ---
+
+        /**
+         * Initializes Firebase and sets up the authentication listener.
+         */
+        async function initializeFirebase() {
+            let isConfigValid = Object.keys(firebaseConfig).length > 0;
+
+            try {
+                if (isConfigValid) {
+                    const firebaseApp = initializeApp(firebaseConfig);
+                    db = getFirestore(firebaseApp);
+                    auth = getAuth(firebaseApp);
+
+                    if (initialAuthToken) {
+                        await signInWithCustomToken(auth, initialAuthToken);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+                    console.log("Firebase initialized and signed in.");
+                
+                    onAuthStateChanged(auth, (user) => {
+                        if (user) {
+                            app.state.userId = user.uid;
+                            app.state.isAuthReady = true;
+                            app.elements.authStatus.textContent = "متصل";
+                            app.elements.userBadge.textContent = `ID: ${user.uid.substring(0, 4)}...`;
+                            app.elements.userBadge.classList.remove('hidden');
+                            
+                            listenToFavorites();
+                        } else {
+                            app.state.isAuthReady = true;
+                            app.state.userId = crypto.randomUUID(); 
+                            app.elements.authStatus.textContent = "مستخدم مجهول";
+                            app.elements.userBadge.textContent = `ID: NO_AUTH`;
+                            app.elements.userBadge.classList.remove('hidden');
+                        }
+                    });
+
+                } else {
+                    // Config is missing or invalid (Error 1)
+                    app.elements.authStatus.textContent = "خطأ: فشل تهيئة Firebase";
+                    console.error("Firebase config is missing or invalid.");
+                    
+                    // Fallback to render UI without database features
+                    app.state.isAuthReady = false; 
+                    app.state.userId = crypto.randomUUID();
+                    app.elements.userBadge.textContent = `ID: OFFLINE`;
+                    app.elements.userBadge.classList.remove('hidden');
+                }
+
+            } catch (error) {
+                // Runtime error during setup (Error 2 or other issues)
+                console.error("Error during Firebase setup or sign-in:", error);
+                app.elements.authStatus.textContent = "خطأ: فشل تهيئة Firebase";
+                
+                // Fallback to render UI without database features
+                app.state.isAuthReady = false;
+                app.state.userId = crypto.randomUUID();
+                app.elements.userBadge.textContent = `ID: OFFLINE`;
+                app.elements.userBadge.classList.remove('hidden');
+            }
+        }
+        
+        // --- 5. FIRESTORE LOGIC: FAVORITES ---
+
+        /**
+         * Returns the collection reference for the current user's favorites.
+         */
+        function getFavoritesCollectionRef() {
+            if (!db || !app.state.userId) {
+                console.error("Firestore or User ID not available.");
+                return null;
+            }
+            // Private data path: /artifacts/{appId}/users/{userId}/favorites
+            const path = `/artifacts/${appId}/users/${app.state.userId}/favorites`;
+            return collection(db, path);
+        }
+
+        /**
+         * Sets up a real-time listener for the user's favorites.
+         */
+        function listenToFavorites() {
+            const ref = getFavoritesCollectionRef();
+            if (!ref) return;
+
+            onSnapshot(ref, (snapshot) => {
+                const newFavorites = new Map();
+                snapshot.forEach(doc => {
+                    const data = doc.data();
+                    if (data.channelId) {
+                        // Use the current CHANNEL_MAP (which might be updated by M3U)
+                        const channelData = CHANNEL_MAP[data.channelId];
+                        if (channelData) {
+                            newFavorites.set(data.channelId, { docId: doc.id, channelData: channelData });
+                        }
+                    }
+                });
+                
+                app.state.favorites = newFavorites;
+                console.log(`Favorites updated: ${newFavorites.size} items.`);
+                
+                // Re-render based on new favorite state
+                renderChannels();
+                renderCategories();
+            }, (error) => {
+                console.error("Error listening to favorites:", error);
+            });
+        }
+        
+        /**
+         * Adds or removes a channel from favorites in Firestore.
+         */
+        app.toggleFavorite = async (channelId) => {
+            if (!app.state.isAuthReady || !app.state.userId || !db) {
+                console.warn("User is offline or not ready. Cannot save favorites.");
+                
+                const originalStatus = app.elements.authStatus.textContent;
+                app.elements.authStatus.textContent = "يرجى الانتظار! جاري التحقق من الاتصال...";
+                setTimeout(() => {
+                    app.elements.authStatus.textContent = originalStatus;
+                }, 3000);
+                
+                return;
+            }
+            
+            const favoritesRef = getFavoritesCollectionRef();
+            if (!favoritesRef) return;
+            
+            const isFavorited = app.state.favorites.has(channelId);
+            const channel = CHANNEL_MAP[channelId]; // Get the most current channel data
+
+            try {
+                if (isFavorited) {
+                    // REMOVE
+                    const docId = app.state.favorites.get(channelId).docId;
+                    await deleteDoc(doc(favoritesRef, docId));
+                } else {
+                    // ADD
+                    await addDoc(favoritesRef, {
+                        channelId: channelId,
+                        name: channel.name,
+                        category: channel.category,
+                        timestamp: Date.now()
+                    });
+                }
+            } catch (error) {
+                console.error("Error toggling favorite status:", error);
+            }
+        };
+
+        // --- 6. CHANNEL RENDERING LOGIC ---
+
+        /**
+         * Renders a single channel card.
+         */
+        function renderChannelCard(channel) {
+            const isFavorited = app.state.favorites.has(channel.id);
+            const isAuthReady = app.state.isAuthReady;
+            
+            const favIcon = isFavorited ? '⭐' : '☆';
+            const favClass = isFavorited ? 'favorited' : 'text-gray-500 hover:text-yellow-400';
+            
+            const disabledAttr = isAuthReady ? '' : 'disabled';
+            const disabledClass = isAuthReady ? '' : 'opacity-50 cursor-not-allowed';
+
+            return `
+                <div class="channel-card-hover bg-gray-800 p-3 rounded-xl shadow-lg border-b-4 border-red-500/0 hover:border-red-500 transition-all duration-300 transform space-y-2 relative group">
+                    
+                    <!-- Favorite Button -->
+                    <button onclick="event.stopPropagation(); app.toggleFavorite('${channel.id}')"
+                            class="absolute top-2 left-2 p-1 text-2xl fav-btn ${favClass} ${disabledClass}"
+                            aria-label="${isFavorited ? 'إزالة من المفضلة' : 'إضافة إلى المفضلة'}"
+                            ${disabledAttr}>
+                        ${favIcon}
+                    </button>
+
+                    <!-- Channel Info & Player Button -->
+                    <div onclick="app.openPlayer('${channel.name}', '${channel.url}')" class="cursor-pointer pt-6 pb-2 space-y-2">
+                        <div class="flex items-center justify-end text-right space-x-2 space-x-reverse">
+                            <span class="text-3xl">${channel.icon}</span>
+                            <h3 class="text-lg font-bold truncate text-white">${channel.name}</h3>
+                        </div>
+                        <p class="text-sm text-gray-400 text-right pr-1">الفئة: ${channel.category}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        /**
+         * Filters the channels based on current state and renders the grid.
+         */
+        function renderChannels() {
+            const { activeCategory, searchQuery } = app.state;
+            const container = app.elements.channelsContainer;
+            
+            container.innerHTML = '';
+            app.elements.loadingPlaceholder.classList.remove('hidden');
+            app.elements.noResults.classList.add('hidden');
+            
+            setTimeout(() => {
+                app.elements.loadingPlaceholder.classList.add('hidden');
+                
+                let filteredChannels = ALL_CHANNELS;
+
+                if (activeCategory === 'المفضلة') {
+                    const favoriteIds = Array.from(app.state.favorites.keys());
+                    // Filter ALL_CHANNELS to keep their order, but only include favorites
+                    filteredChannels = ALL_CHANNELS.filter(c => favoriteIds.includes(c.id));
+                } else if (activeCategory !== 'الكل') {
+                    filteredChannels = filteredChannels.filter(c => c.category === activeCategory);
+                }
+
+                // Filter by Search Query (case-insensitive)
+                if (searchQuery) {
+                    const query = searchQuery.toLowerCase();
+                    filteredChannels = filteredChannels.filter(c => 
+                        c.name.toLowerCase().includes(query)
+                    );
+                }
+
+                if (filteredChannels.length === 0) {
+                    app.elements.noResults.classList.remove('hidden');
+                    return;
+                }
+
+                app.elements.noResults.classList.add('hidden');
+                
+                // Render
+                container.innerHTML = filteredChannels.map(renderChannelCard).join('');
+                
+                // Update title
+                let title = activeCategory;
+                if (activeCategory === 'المفضلة') {
+                    title = `⭐ القنوات المفضلة (${app.state.favorites.size})`;
+                } else if (activeCategory === 'الكل' && searchQuery) {
+                    title = `نتائج البحث عن: "${searchQuery}"`;
+                }
+                app.elements.currentCategoryTitle.textContent = title;
+            }, 50); 
+        }
+
+        // --- 7. CATEGORY LOGIC ---
+
+        /**
+         * Renders the category buttons.
+         */
+        function renderCategories() {
+            const container = app.elements.categoriesContainer;
+            container.innerHTML = ALL_CATEGORIES.map(category => {
+                const isActive = app.state.activeCategory === category;
+                let text = category;
+                if (category === 'المفضلة' && app.state.favorites.size > 0) {
+                    text = `${category} (${app.state.favorites.size})`;
+                }
+
+                return `
+                    <button onclick="app.setCategory('${category}')"
+                            class="whitespace-nowrap py-2 px-4 rounded-full transition duration-200 text-sm font-semibold 
+                            ${isActive 
+                                ? 'bg-red-500 text-white shadow-md shadow-red-500/50' 
+                                : 'bg-gray-700 text-gray-300 hover:bg-red-600/30'}">
+                        ${text}
+                    </button>
+                `;
+            }).join('');
+        }
+
+        /**
+         * Sets the active category and triggers re-render.
+         */
+        app.setCategory = (category) => {
+            app.state.activeCategory = category;
+            app.state.searchQuery = ''; 
+            app.elements.searchInput.value = '';
+            renderCategories();
+            renderChannels();
+        };
+
+        // --- 8. SEARCH LOGIC ---
+
+        app.elements.searchInput.addEventListener('input', (e) => {
+            app.state.searchQuery = e.target.value.trim();
+            app.state.activeCategory = 'الكل';
+            renderCategories(); 
+            renderChannels();
+        });
+
+
+        // --- 9. VIDEO PLAYER LOGIC ---
+        
+        app.openPlayer = (channelName, url) => {
+            const { playerModal, videoPlayer, playerTitle } = app.elements;
+            
+            playerTitle.textContent = `مشاهدة: ${channelName}`;
+            
+            if (Hls.isSupported()) {
+                if (app.state.hls) {
+                    app.state.hls.destroy();
+                }
+                
+                const hls = new Hls();
+                hls.loadSource(url);
+                hls.attachMedia(videoPlayer);
+                app.state.hls = hls;
+
+                hls.on(Hls.Events.ERROR, function (event, data) {
+                    if (data.fatal) {
+                        console.error('HLS Fatal Error:', data.details);
+                        if (data.type === Hls.ErrorTypes.NETWORK_ERROR || data.type === Hls.ErrorTypes.MEDIA_ERROR) {
+                             if (typeof videoPlayer.canPlayType === 'function' && videoPlayer.canPlayType('application/vnd.apple.mpegurl')) {
+                                videoPlayer.src = url;
+                                videoPlayer.play();
+                             } else {
+                                playerTitle.textContent = `فشل تشغيل: ${channelName} (خطأ في البث)`;
+                             }
+                        }
+                    }
+                });
+
+            } else if (videoPlayer.canPlayType('application/vnd.apple.mpegurl')) {
+                videoPlayer.src = url;
+            } else {
+                playerTitle.textContent = `متصفحك لا يدعم تشغيل هذا البث!`;
+            }
+
+            playerModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; 
+            videoPlayer.play().catch(error => {
+                // Autoplay was blocked
+            });
+        };
+
+        app.closePlayer = () => {
+            const { playerModal, videoPlayer } = app.elements;
+
+            videoPlayer.pause();
+            videoPlayer.src = ""; 
+            
+            if (app.state.hls) {
+                app.state.hls.destroy();
+                app.state.hls = null;
+            }
+
+            playerModal.classList.add('hidden');
+            document.body.style.overflow = ''; 
+        };
+
+        // --- 10. INITIALIZATION ---
+
+        window.onload = async () => {
+            // 1. Initialize Firebase (Auth & Firestore)
+            await initializeFirebase();
+            
+            // 2. Load and parse the M3U channels
+            await fetchAndParseM3U(USER_M3U_URL);
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !app.elements.playerModal.classList.contains('hidden')) {
+                    app.closePlayer();
+                }
+            });
+        };
+    </script>
 </body>
 </html>
