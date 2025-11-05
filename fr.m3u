@@ -1,0 +1,225 @@
+#EXTINF:-1,TF1
+http://173.229.4.239:5004/auto/v1
+#EXTINF:-1,France 2
+http://173.229.4.239:5004/auto/v2
+#EXTINF:-1,France 3 Paris-Ile-de-France
+http://173.229.4.239:5004/auto/v3
+#EXTINF:-1,France 4
+http://173.229.4.239:5004/auto/v4
+#EXTINF:-1,France 5
+http://173.229.4.239:5004/auto/v5
+#EXTINF:-1,M6
+http://173.229.4.239:5004/auto/v6
+#EXTINF:-1,Arte
+http://173.229.4.239:5004/auto/v7
+#EXTINF:-1,LCP
+http://173.229.4.239:5004/auto/v8
+#EXTINF:-1,W9
+http://173.229.4.239:5004/auto/v9
+#EXTINF:-1,TMC
+http://173.229.4.239:5004/auto/v10
+#EXTINF:-1,TFX
+http://173.229.4.239:5004/auto/v11
+#EXTINF:-1,Gulli
+http://173.229.4.239:5004/auto/v12
+#EXTINF:-1,BFMTV
+http://173.229.4.239:5004/auto/v13
+#EXTINF:-1,CNEWS
+http://173.229.4.239:5004/auto/v14
+#EXTINF:-1,LCI
+http://173.229.4.239:5004/auto/v15
+#EXTINF:-1,franceinfo:
+http://173.229.4.239:5004/auto/v16
+#EXTINF:-1,CSTAR
+http://173.229.4.239:5004/auto/v17
+#EXTINF:-1,T18
+http://173.229.4.239:5004/auto/v18
+#EXTINF:-1,NOVO19
+http://173.229.4.239:5004/auto/v19
+#EXTINF:-1,TF1 Series Films
+http://173.229.4.239:5004/auto/v20
+#EXTINF:-1,L'Equipe
+http://173.229.4.239:5004/auto/v21
+#EXTINF:-1,6ter
+http://173.229.4.239:5004/auto/v22
+#EXTINF:-1,RMC Story
+http://173.229.4.239:5004/auto/v23
+#EXTINF:-1,RMC Decouverte
+http://173.229.4.239:5004/auto/v24
+#EXTINF:-1,Cherie 25
+http://173.229.4.239:5004/auto/v25
+#EXTINF:-1,Canal 31
+http://173.229.4.239:5004/auto/v31
+#EXTINF:-1,20 minutes TV
+http://173.229.4.239:5004/auto/v32
+#EXTINF:-1,Le Figaro TV IDF
+http://173.229.4.239:5004/auto/v34
+#EXTINF:-1,France 2 UHD
+http://173.229.4.239:5004/auto/v52
+#EXTINF:-1,Test UHD
+http://173.229.4.239:5004/auto/v53
+#EXTINF:-1,Arte TV
+http://173.229.4.239:5004/auto/v77
+ 
+#EXTINF:-1,France 2 HD
+http://151.80.18.177:86/France_2_HD/index.m3u8
+#EXTINF:-1,France 3 HD
+http://151.80.18.177:86/France_3_HD/index.m3u8
+#EXTINF:-1,France 4 HD
+http://151.80.18.177:86/France_4_HD/index.m3u8
+#EXTINF:-1,France 5 HD
+http://151.80.18.177:86/France_5_HD/index.m3u8
+#EXTINF:-1,Canal+ HD
+http://151.80.18.177:86/Canal+_HD/index.m3u8
+#EXTINF:-1,Canal+ Cinema HD
+http://151.80.18.177:86/Canal+_cinema_HD/index.m3u8
+#EXTINF:-1,Comedie+ HD
+http://151.80.18.177:86/Comedie+_HD/index.m3u8
+#EXTINF:-1,ARTE HD
+http://151.80.18.177:86/ARTE_HD/index.m3u8
+#EXTINF:-1,Paris Premiere HD
+http://151.80.18.177:86/Paris_Premiere_HD/index.m3u8
+#EXTINF:-1,AB1 HD
+http://151.80.18.177:86/AB1/index.m3u8
+#EXTINF:-1,RTL 9 HD
+http://151.80.18.177:86/RTL9/index.m3u8
+#EXTINF:-1,TF1 HD
+http://151.80.18.177:86/TF1_HD/index.m3u8
+#EXTINF:-1,Teva HD
+http://151.80.18.177:86/Teva_HD/index.m3u8
+#EXTINF:-1,National Geo HD
+http://151.80.18.177:86/National_Geo_HD/index.m3u8
+#EXTINF:-1,Histoire HD
+http://151.80.18.177:86/Histoire/index.m3u8
+#EXTINF:-1,Discovery HD
+http://151.80.18.177:86/Discovery_HD/index.m3u8
+#EXTINF:-0,RMC DECOUVERDE
+http://151.80.18.177:86/RMC_Decouverte_HD/index.m3u8
+#EXTINF:-1,M6 HD
+http://151.80.18.177:86/M6_HD/index.m3u8
+#EXTINF:-1,W9 HD
+http://151.80.18.177:86/W9_HD/index.m3u8
+#EXTINF:-1,NRJ_12 HD
+http://151.80.18.177:86/NRJ_12_HD/index.m3u8
+#EXTINF:-1,TRACE URBAN
+http://151.80.18.177:86/Trace_Urban_HD/index.m3u8
+#EXTINF:-1,D17 CSTAR HD
+http://151.80.18.177:86/D17_HD/index.m3u8
+#EXTINF:-1,CANAL+ Sport
+http://151.80.18.177:86/Canal+_sport_HD/index.m3u8
+#EXTINF:-1,GOLF+
+http://151.80.18.177:86/GOLF+_HD/index.m3u8
+#EXTINF:-1,Euro Sport HD
+http://151.80.18.177:86/Eurosport_HD/index.m3u8
+#EXTINF:-1,Euro Sport 2 HD
+http://151.80.18.177:86/Eurosport_2_HD/index.m3u8
+#EXTINF:-1,Disney HD
+http://151.80.18.177:86/Disney_Channel_HD/index.m3u8
+#EXTINF:-1,Tiji HD
+http://151.80.18.177:86/Tiji_HD/index.m3u8
+#EXTINF:-1,LCI HD
+http://151.80.18.177:86/LCI_HD/index.m3u8
+ 
+#EXTINF:-1,France 2 HD
+http://185.130.218.254:25007/France2/mpegts
+#EXTINF:-1,TF1 HD
+http://185.130.218.254:25007/TF1/mpegts
+#EXTINF:-1,Premiere HD
+http://185.130.218.254:25007/Premiere/mpegts
+#EXTINF:-1,RTL Television
+http://185.130.218.254:25007/RTL/mpegts
+#EXTINF:-1,AMC
+http://185.130.218.254:25007/AMC/mpegts
+#EXTINF:-1,ITV4 HD
+http://185.130.218.254:25007/ITV4/mpegts
+#EXTINF:-1,HOLLYWOOD
+http://185.130.218.254:25007/Hollywood/mpegts
+#EXTINF:-1,NatGeo HD
+http://185.130.218.254:25007/NatGeo/mpegts
+
+#EXTINF:-1,L'EQUIPE
+https://viamotionhsi.netplus.ch/live/eds/lequipe21/browser-HLS8/lequipe21.m3u8
+#EXTINF:-1,TF1 HD
+https://viamotionhsi.netplus.ch/live/eds/tf1hd/browser-HLS8/tf1hd.m3u8
+#EXTINF:-1,France2 HD
+https://viamotionhsi.netplus.ch/live/eds/france2hd/browser-HLS8/france2hd.m3u8
+#EXTINF:-1,France3 HD
+https://viamotionhsi.netplus.ch/live/eds/france3hd/browser-HLS8/france3hd.m3u8
+#EXTINF:-1,France4 HD
+https://viamotionhsi.netplus.ch/live/eds/france4hd/browser-HLS8/france4hd.m3u8
+#EXTINF:-1 tvg-id="France5.fr",France5 HD
+https://viamotionhsi.netplus.ch/live/eds/france5hd/browser-HLS8/france5hd.m3u8
+#EXTINF:-1 tvg-id="m6.fr",M6 HD
+https://viamotionhsi.netplus.ch/live/eds/m6hd/browser-HLS8/m6hd.m3u8
+#EXTINF:-1 tvg-id="6ter.fr",6ter HD
+https://viamotionhsi.netplus.ch/live/eds/6ter/browser-HLS8/6ter.m3u8
+#EXTINF:-1 tvg-id="w9.fr",W9 HD
+https://viamotionhsi.netplus.ch/live/eds/w9/browser-HLS8/w9.m3u8
+#EXTINF:-1 tvg-id="tmc.fr",TMC HD
+https://viamotionhsi.netplus.ch/live/eds/tmc/browser-HLS8/tmc.m3u8
+#EXTINF:-1 tvg-id="tfx.fr",TFX HD
+https://viamotionhsi.netplus.ch/live/eds/nt1/browser-HLS8/nt1.m3u8
+#EXTINF:-1 tvg-id="tf1seriesfilms.fr",TF1 Series Films HD
+https://viamotionhsi.netplus.ch/live/eds/hd1/browser-HLS8/hd1.m3u8
+#EXTINF:-1 tvg-id="t18.fr",T18 HD
+https://viamotionhsi.netplus.ch/live/eds/t18/browser-HLS8/t18.m3u8
+#EXTINF:-1 tvg-id="cstar.fr",CSTAR HD
+https://viamotionhsi.netplus.ch/live/eds/d17/browser-HLS8/d17.m3u8
+#EXTINF:-1 tvg-id="rtl9.be",RTL9 HD
+https://viamotionhsi.netplus.ch/live/eds/rtl9/browser-HLS8/rtl9.m3u8
+#EXTINF:-1 tvg-id="rmcstory.fr",RMC STORY HD
+https://viamotionhsi.netplus.ch/live/eds/numero23/browser-HLS8/numero23.m3u8
+#EXTINF:-1 tvg-id="paramount.fr",paramount network F HD
+https://viamotionhsi.netplus.ch/live/eds/paramount/browser-HLS8/paramount.m3u8
+#EXTINF:-1 tvg-id="cherie25.fr",Chérie 25 HD
+https://viamotionhsi.netplus.ch/live/eds/cherie25/browser-HLS8/cherie25.m3u8
+#EXTINF:-1 tvg-id="tcm.fr",TCM CINEMA F HD
+https://viamotionhsi.netplus.ch/live/eds/tcm/browser-HLS8/tcm.m3u8
+#EXTINF:-1 tvg-id="gulli.fr",gulli
+https://viamotionhsi.netplus.ch/live/eds/gulli/browser-HLS8/gulli.m3u8
+#EXTINF:-1 tvg-id="game1.fr",G1 HD
+https://viamotionhsi.netplus.ch/live/eds/gameone/browser-HLS8/gameone.m3u8
+#EXTINF:-1 tvg-id="rmcdecouverte.fr",RMC DECOUVERTE HD
+https://viamotionhsi.netplus.ch/live/eds/rmcdecouverte/browser-HLS8/rmcdecouverte.m3u8
+#EXTINF:-1 tvg-id="planeteplus.fr",PLANETE+ HD
+https://viamotionhsi.netplus.ch/live/eds/planeteplus/browser-HLS8/planeteplus.m3u8
+#EXTINF:-1 tvg-id="animaux.fr",ANIMAUX HD
+https://viamotionhsi.netplus.ch/live/eds/animaux/browser-HLS8/animaux.m3u8
+#EXTINF:-1 tvg-id="trek.fr",TREK HD
+https://viamotionhsi.netplus.ch/live/eds/escales/browser-HLS8/escales.m3u8
+#EXTINF:-1 tvg-id="mtvfrance.fr",MTV France HD
+https://viamotionhsi.netplus.ch/live/eds/mtvfrance/browser-HLS8/mtvfrance.m3u8
+#EXTINF:-1 tvg-id="kto.fr",kto
+https://viamotionhsi.netplus.ch/live/eds/kto/browser-HLS8/kto.m3u8
+#EXTINF:-1 tvg-id="canalj.fr",Canal J HD
+https://viamotionhsi.netplus.ch/live/eds/canalj/browser-HLS8/canalj.m3u8
+#EXTINF:-1 tvg-id="canalplusclair.fr",canal+ en clair
+https://viamotionhsi.netplus.ch/live/eds/canalplusclair/browser-HLS8/canalplusclair.m3u8
+#EXTINF:-1 tvg-id="arte.fr",arte HD
+https://viamotionhsi.netplus.ch/live/eds/artehd/browser-HLS8/artehd.m3u8
+#EXTINF:-1 tvg-id="bfmtv.fr",BFM TV HD
+https://viamotionhsi.netplus.ch/live/eds/bfmtv/browser-HLS8/bfmtv.m3u8
+#EXTINF:-1 tvg-id="france24.fr",France24 HD
+https://viamotionhsi.netplus.ch/live/eds/france24/browser-HLS8/france24.m3u8
+#EXTINF:-1 tvg-id="euronews.fr",euronews F HD
+https://viamotionhsi.netplus.ch/live/eds/euronews/browser-HLS8/euronews.m3u8
+#EXTINF:-1 tvg-id="tv5monde.fr",TV5 MONDE FBSM HD
+https://viamotionhsi.netplus.ch/live/eds/tv5mondefbs/browser-HLS8/tv5mondefbs.m3u8
+#EXTINF:-1 tvg-id="cnews.fr",CNEWS HD
+https://viamotionhsi.netplus.ch/live/eds/itele/browser-HLS8/itele.m3u8
+#EXTINF:-1 tvg-id="lci.fr",LCI HD
+https://viamotionhsi.netplus.ch/live/eds/lci/browser-HLS8/lci.m3u8
+#EXTINF:-1 tvg-id="bfmbusiness.fr",BFM BUSINESS HD
+https://viamotionhsi.netplus.ch/live/eds/bfmbusiness/browser-HLS8/bfmbusiness.m3u8
+#EXTINF:-1 tvg-id="lcp.fr",LCP Public Senat HD
+https://viamotionhsi.netplus.ch/live/eds/lcp/browser-HLS8/lcp.m3u8
+#EXTINF:-1 tvg-id="franceinfo.fr",Franceinfo HD
+https://viamotionhsi.netplus.ch/live/eds/franceinfo/browser-HLS8/franceinfo.m3u8
+#EXTINF:-1 tvg-id="mezzo.fr",mezzo HD
+https://viamotionhsi.netplus.ch/live/eds/mezzo/browser-HLS8/mezzo.m3u8
+ 
+ 
+#EXTINF:-1 tvg-id="RTS1.ch",RTS 1 HD
+https://viamotionhsi.netplus.ch/live/eds/rts1hd/browser-HLS8/rts1hd.m3u8
+#EXTINF:-1 tvg-id="RTS2.ch",RTS 2 HD
+https://viamotionhsi.netplus.ch/live/eds/rts2hd/browser-HLS8/rts2hd.m3u8
