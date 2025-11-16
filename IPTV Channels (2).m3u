@@ -1,0 +1,54 @@
+#EXTM3U
+#PLAYLIST:IPTV Channels
+
+#EXTINF:-1 tvg-logo="https://images.pexels.com/photos/1201996/pexels-photo-1201996.jpeg" group-title="all",الأولى المصرية
+https://github.com/Free-TV/IPTV/raw/master/playlists/playlist_egypt.m3u8
+
+#EXTINF:-1 tvg-logo="https://images.pexels.com/photos/1201996/pexels-photo-1201996.jpeg" group-title="all",النيل للأخبار
+http://xiptv.com:8080/live/egypt/nile-news/1.m3u8
+
+#EXTINF:-1 tvg-logo="https://images.pexels.com/photos/1201996/pexels-photo-1201996.jpeg" group-title="all",الحياة
+https://raw.githubusercontent.com/iptv-org/iptv/master/streams/eg_alhayat.m3u8
+
+#EXTINF:-1 tvg-logo="https://images.pexels.com/photos/1201996/pexels-photo-1201996.jpeg" group-title="all",النيل الرياضية
+http://smartiptv.me:8080/live/sports/nile-sport/2.m3u8
+
+#EXTINF:-1 tvg-logo="https://images.pexels.com/photos/1201996/pexels-photo-1201996.jpeg" group-title="all",الكأس
+https://github.com/Free-TV/IPTV/raw/master/streams/alkass_sports.m3u8
+
+#EXTINF:-1 tvg-logo="https://images.pexels.com/photos/1201996/pexels-photo-1201996.jpeg" group-title="all",روتانا سينما
+http://prosmarters.com:8080/live/movies/rotana-cinema/3.m3u8
+
+#EXTINF:-1 tvg-logo="https://images.pexels.com/photos/1201996/pexels-photo-1201996.jpeg" group-title="all",النهار سينما
+https://raw.githubusercontent.com/Free-TV/IPTV/master/streams/nahar_cinema.m3u8
+
+#EXTINF:-1 tvg-logo="https://images.pexels.com/photos/1201996/pexels-photo-1201996.jpeg" group-title="all",الإخبارية
+http://xiptv.com:8080/live/saudi/alekhbariya/4.m3u8
+
+#EXTINF:-1 tvg-logo="https://images.pexels.com/photos/1201996/pexels-photo-1201996.jpeg" group-title="all",العربية
+https://github.com/iptv-org/iptv/raw/master/streams/sa_alarabiya.m3u8
+
+#EXTINF:-1 tvg-logo="https://images.pexels.com/photos/1201996/pexels-photo-1201996.jpeg" group-title="all",KSA Sports
+http://smartiptv.me:8080/live/saudi/ksa-sports/5.m3u8
+
+#EXTINF:-1 tvg-logo="https://images.pexels.com/photos/1201996/pexels-photo-1201996.jpeg" group-title="all",سكاي نيوز عربية
+https://raw.githubusercontent.com/Free-TV/IPTV/master/streams/skynews_arabia.m3u8
+
+#EXTINF:-1 tvg-logo="https://images.pexels.com/photos/1201996/pexels-photo-1201996.jpeg" group-title="all",الإمارات
+http://prosmarters.com:8080/live/uae/emirates-tv/6.m3u8
+
+#EXTINF:-1 tvg-logo="https://images.pexels.com/photos/1201996/pexels-photo-1201996.jpeg" group-title="all",الجديد
+http://xiptv.com:8080/live/lebanon/aljadeed/7.m3u8
+
+#EXTINF:-1 tvg-logo="https://images.pexels.com/photos/1201996/pexels-photo-1201996.jpeg" group-title="all",المنار
+https://github.com/iptv-org/iptv/raw/master/streams/lb_almanar.m3u8
+
+#EXTINF:-1 tvg-logo="https://images.pexels.com/photos/1201996/pexels-photo-1201996.jpeg" group-title="all",LBC
+http://smartiptv.me:8080/live/lebanon/lbc/8.m3u8
+
+#EXTINF:-1 tvg-logo="https://images.pexels.com/photos/1201996/pexels-photo-1201996.jpeg" group-title="all",الأردن
+http://prosmarters.com:8080/live/jordan/jordan-tv/9.m3u8
+
+#EXTINF:-1 tvg-logo="https://images.pexels.com/photos/1201996/pexels-photo-1201996.jpeg" group-title="all",رؤيا
+https://raw.githubusercontent.com/Free-TV/IPTV/master/streams/roya_tv.m3u8
+
