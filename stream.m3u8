@@ -1,8 +1,4 @@
 #EXTM3U
-#EXTINF:0,20246.ts
-#EXTVLCOPT:network-caching=1000
-http://new.rlive.us:8080/Elgnde_@_Tarek@/8LbFEg7HgD/20246.ts
-http://new.rlive.us:8080/Elgnde_@_Tarek@/8LbFEg7HgD/2.ts
 #EXTINF:-1,beIN Sports Global
 http://new.rlive.us:8080/Elgnde_@_Tarek@/8LbFEg7HgD/4487.ts
 #EXTINF:-1,beIN Sports 1 HD
@@ -2799,3 +2795,4 @@ http://new.rlive.us:8080/Elgnde_@_Tarek@/8LbFEg7HgD/110093.ts
 http://new.rlive.us:8080/Elgnde_@_Tarek@/8LbFEg7HgD/110094.ts
 #EXTINF:-1,|DK| TV3+
 http://new.rlive.us:8080/Elgnde_@_Tarek@/8LbFEg7HgD/110095.ts
+
