@@ -1,6 +1,4 @@
 #EXTM3U
-#PLAYLIST:IPTV Channels
-
 #EXTINF:-1 tvg-logo="https://images.pexels.com/photos/1201996/pexels-photo-1201996.jpeg" group-title="all",الأولى المصرية
 https://github.com/Free-TV/IPTV/raw/master/playlists/playlist_egypt.m3u8
 
